@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        html {
+            background-color: black;
+        }
+        body {
+            text-align: center;
+            font-size: 20px;
+            font-family: 'Arial';  
+            background-color:cornflowerblue;
+            width: 900px;
+            padding: 100px 20px;
+            margin: 100px 500px;
+            border: white solid;
+        }
+        h1 {
+            color: white;
+            background-color:lightskyblue;
+            font-size: 80px;
+            text-align: center;
+            font-family: 'Arial';
+            padding: 0px 0px;
+            margin: 10px -20px;
+            margin-top: -50px;
+            margin-bottom: 100px;
+            border: white solid;
+        }
+        button {
+            width: 180px;
+            height: 50px;
+            font-size: 20px;
+            background-color: white;
+            color: cornflowerblue;
+            font-family: 'Arial';
+            padding: 8px 10px;
+            margin: 50px 200px -50px 20px;
+            border: solid;
+            border-radius: 20px;
+        }
+        input {
+            width: 20%;
+            height: 25px;
+            border: 1px dotted #999;
+            border-radius: 10px;   
+            font-size: 20px; 
+        }
+        p {
+            color: white;
+            font-size: 20px;
+            text-align: right;
+            font-family: 'Arial';
+            width: 1500px;
+            margin: 20px 0px 0px -750px;   
+        }
+    </style>
+    <head>
+        <title>Registro de usuario</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Registro de usuario</h1>
+        <p>Nombre: <input type="text" id="1"></p>
+        <p>Apellido: <input type="text" id="2"></p>
+        <p>DNI: <input type="text" id="3"></p>
+        <p>Domicilio: <input type="text" id="4"></p>
+        <p>Fecha de nacimiento: <input type="date" id="5"></p>
+        <p>Prestador de cobertura medica: <input type="text" id="6"></p>
+        <p>Tipo de plan medico: <input type="text" id="7"></p>
+        <p>Tarjeta de credito: <input type="text" id="8"></p>
+        <p> Vencimiento de tarjeta: <input type="text" style="width:30px" id="9" maxlength="2"> 
+                                  / <input type="text" style="width:50px" id="10" maxlength="4"> 
+                                    Titular: <input type="text" style="width:120px" id="11"></p>
+        <p>E-mail: <input type="text" id="12"></p>
+        <p>Usuario: <input type="text" id="13"></p>
+        <p>Contraseña: <input type="password" id="14"></p>
+        <p><button type="button" value="registrar" onclick="validaRegistro()">Finalizar registro</button></p>
+
+        <script>
+            //--------------------------------------------------------------------------------------------
+            var alfanumerico="aAbBcCdDeEfFgGhHiIjJkKlLmMnNñÑoOpPqQrRsStTuUvVwWxXyYzZ0123456789 ";
+            var numerico="0123456789";
+            //validar si es alfanumerico mayor/igual de 8 carecteres--------------------------------------
+            function validacion1(texto) {
+                if(texto.length >= 8) {
+                    for(i=0; i<texto.length; i++) {
+                        if (alfanumerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+             //validar si es alfanumerico no vacio-------------------------------------------------------
+             function validacion2(texto) {
+                if(texto.length > 0) {
+                    for(i=0; i<texto.length; i++) {
+                        if (alfanumerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            //validar si es numerico de 8 caracteres fijo--------------------------------------------------
+            function validacion3(texto) {
+                if(texto.length == 8) {
+                    for(i=0; i<texto.length; i++) {
+                        if (numerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            //validar que no sea vacio----------------------------------------------------------------------
+            function validacion4(texto) {
+                if(texto.length > 0) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+           //validar si es numerico de 16 caracteres--------------------------------------------------------
+           function validacion5(texto) {
+                if(texto.length == 16 || texto.length == 0) {
+                    for(i=0; i<texto.length; i++) {
+                        if (numerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            //validar mes correcto--------------------------------------------------------------------------
+            function validacion6(texto) {
+                for(i=0; i<texto.length; i++) {
+                        if (numerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                        else{
+                            console.log(parseInt(texto));
+                            if(parseInt(texto) <= 0 || parseInt(texto) > 12) {
+                                return false;
+                            }
+                            else {
+                                return true;
+                            }
+                        }
+                    }
+                return false;
+            }
+             //validar anio correcto--------------------------------------------------------------------------
+             function validacion7(texto) {
+                for(i=0; i<texto.length; i++) {
+                        if (numerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                        else{
+                            console.log(parseInt(texto));
+                            if(parseInt(texto) <= 0 || parseInt(texto) > 2100) {
+                                return false;
+                            }
+                            else {
+                                return true;
+                            }
+                        }
+                }
+                return false;
+            }
+             //validar si es alfanumerico---------------------------------------------------------------------
+             function validacion8(texto) {
+                for(i=0; i<texto.length; i++) {
+                        if (alfanumerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                return true;
+            }
+
+            function validacion9(texto) {
+                var alfanumerico="aAbBcCdDeEfFgGhHiIjJkKlLmMnNñÑoOpPqQrRsStTuUvVwWxXyYzZ0123456789 ";
+                if(texto.length > 0) {
+                    for(i=0; i<texto.length; i++) {
+                        if (alfanumerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            
+            //validar si solo numeros--------------------------------------
+            function validacion10(texto) {
+                if(texto.length > 0) {
+                    for(i=0; i<texto.length; i++) {
+                        if (numerico.indexOf(texto.charAt(i),0) == -1) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+
+             //-----------------------------------------------------------------------------------------------
+             function validaRegistro() {
+                 var errores = 0;
+                 if(!validacion2(document.getElementById("1").value)){
+                    alert("nombre invalido");
+                    errores++;
+                 }
+                 if(!validacion2(document.getElementById("2").value)){
+                    alert("apellido invalido");
+                    errores++;
+                 }
+                 if(!validacion3(document.getElementById("3").value)){
+                     alert("DNI invalido");
+                     errores++;
+                 }
+                 if(!validacion2(document.getElementById("4").value)){
+                     alert("Domicilio invalido");
+                     errores++;
+                 }
+                 if(!validacion2(document.getElementById("6").value)){
+                     alert("prestador invalido");
+                     errores++;
+                 }
+                 if(!validacion2(document.getElementById("7").value)){
+                     alert("plan medico invalido");
+                     errores++;
+                 }
+                 if(!validacion5(document.getElementById("8").value)){
+                     alert("nro tarjeta invalido");
+                     errores++;
+                 }
+                 if(!validacion6(document.getElementById("9").value)){
+                     alert("mes invalido");
+                     errores++;
+                 }
+                 if(!validacion7(document.getElementById("10").value)){
+                     alert("anio invalido");
+                     errores++;
+                 }
+                 if(!validacion8(document.getElementById("11").value)){
+                     alert("titular invalido");
+                     errores++;
+                 }
+                 if(!validacion4(document.getElementById("12").value)){
+                     alert("e-mail invalido");
+                     errores++;
+                 }
+                 if(!validacion1(document.getElementById("13").value)){
+                     alert("usuario invalido");
+                     errores++;
+                 }
+                 if(!validacion1(document.getElementById("14").value)){
+                     alert("contraseña invalido");
+                     errores++;
+                 }
+
+                 if(!validacion9(document.getElementById("6").value)){
+                    alert("prestador invalido");
+                    errores++;
+                 }
+                 
+                 if(!validacion10(document.getElementById("7").value)){
+                     alert("plan medico invalido");
+                     errores++;
+                 }
+                 
+                 if(errores == 0){
+                     alert("REGISTRO EXITOSO!!!");
+                 }
+
+             }
+        </script>
+    </body>
+</html>
